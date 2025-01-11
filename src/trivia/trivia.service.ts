@@ -29,4 +29,16 @@ export class TriviaService {
         return response[0]; // Return the first (and only) question
     }
 
+    async fetchCategories() {
+        try {
+            const response = await axios.get('https://opentdb.com/api_category.php');
+            return response.data.trivia_categories;
+        } catch (error) {
+            throw new HttpException(
+                `Failed to fetch categories: ${error.message}`,
+                HttpStatus.INTERNAL_SERVER_ERROR,
+            );
+        }
+    }
+
 }

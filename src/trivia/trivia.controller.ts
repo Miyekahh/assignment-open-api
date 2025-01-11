@@ -34,4 +34,9 @@ export class TriviaController {
         );
     }
 
+    @Get('categories')
+    async getCategories() {
+        return this.triviaService.fetchCategories();
+    }
+
 }
