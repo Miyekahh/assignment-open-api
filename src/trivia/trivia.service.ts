@@ -23,4 +23,10 @@ export class TriviaService {
             );
         }
     }
+
+    async fetchRandomQuestion(category = 9, difficulty = 'easy', type = 'multiple') {
+        const response = await this.fetchTriviaQuestions(1, category, difficulty, type); // Limit to 1 question
+        return response[0]; // Return the first (and only) question
+    }
+
 }

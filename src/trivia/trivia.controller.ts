@@ -20,4 +20,18 @@ export class TriviaController {
         );
         return questions;
     }
+
+    @Get('random')
+    async getRandomTrivia(
+        @Query('category') category: number,
+        @Query('difficulty') difficulty: string,
+        @Query('type') type: string,
+    ) {
+        return this.triviaService.fetchRandomQuestion(
+            category || 9,
+            difficulty || 'easy',
+            type || 'multiple',
+        );
+    }
+
 }
